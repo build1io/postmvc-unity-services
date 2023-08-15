@@ -13,7 +13,7 @@ namespace Build1.PostMVC.Unity.Services.Commands
         {
             if (UnityServicesAdapter.Initialized)
             {
-                Log.Error("Unity services already initialized");
+                Log.Debug("Unity services already initialized");
                 return;
             }
             
