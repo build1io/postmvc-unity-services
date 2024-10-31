@@ -5,7 +5,7 @@ using Build1.PostMVC.Unity.Services.Impl;
 
 namespace Build1.PostMVC.Unity.Services.Commands
 {
-    public sealed class UnityServicesInitializeCommand : Command
+    public sealed class UnityServicesWaitCommand : Command
     {
         [Log(LogLevel.Warning)] public ILog Log { get; set; }
         
@@ -13,16 +13,13 @@ namespace Build1.PostMVC.Unity.Services.Commands
         {
             if (UnityServicesAdapter.Initialized)
                 return;
-            
+
             Retain();
             
             UnityServicesAdapter.OnInitialized += OnInitialized;
             UnityServicesAdapter.OnError += OnError;
-            
-            if (!UnityServicesAdapter.Initializing)
-                UnityServicesAdapter.Initialize();
         }
-
+        
         private void OnInitialized()
         {
             UnityServicesAdapter.OnInitialized -= OnInitialized;

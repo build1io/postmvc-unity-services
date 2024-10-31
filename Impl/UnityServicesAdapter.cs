@@ -7,7 +7,8 @@ namespace Build1.PostMVC.Unity.Services.Impl
 {
     internal sealed class UnityServicesAdapter
     {
-        public static bool Initialized => UnityServices.State == ServicesInitializationState.Initialized;
+        public static bool Initialized  => UnityServices.State == ServicesInitializationState.Initialized;
+        public static bool Initializing => UnityServices.State == ServicesInitializationState.Initializing;
 
         public static event Action            OnInitialized;
         public static event Action<Exception> OnError;
